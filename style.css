@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Boogaloo&family=Germania+One&family=Sedgwick+Ave&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #6b1114;
+}
+
+nav{
+    font-family: 'Boogaloo', cursive;
+}
+
+nav ul{
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    height: 55px;
+    background-color: black;
+    color: white;
+}
+
+nav ul li{
+    padding: 0 12px;
+}
+
+.brand{
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 1.3rem;
+}
+
+.brand img{
+    padding: 0 8px;
+    width: 44px;
+}
+
+.container{
+    min-height: 59vh;
+    font-family: 'Boogaloo', cursive;
+    background-color: black;
+    color: white;
+    display: flex;
+    margin: 23px auto;
+    width: 70%;
+    border-radius: 12px;
+    padding: 30px;
+    background-image: url(bg.jpg);
+    background-size: cover;
+}
+
+.bottom{
+    position: sticky;
+    height: 100px;
+    background-color: black;
+    color: white;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.icons{
+    margin-top: 12px;
+}
+
+.icons i{
+    cursor: pointer;
+}
+
+#myprogressbar{
+    width: 80vw;
+    cursor: pointer;
+}
+
+.songitem{
+    height: 50px;
+    display: flex;
+    background-color: #ffe8cc;
+    color: black;
+    margin: 12px 0;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 30px;
+}
+
+.timespan{
+    margin: 0 23px;
+}
+
+.songitem img{
+    width: 43px;
+    margin: 0 23px;
+    border-radius: 30px;
+}
+
+.songlist i{
+    margin: 0 12px;
+    cursor: pointer;
+} 
+
+.songinfo{
+    position: absolute;
+    left: 10vw;
+    font-family: 'Boogaloo', cursive;
+}
+
+.songinfo img{
+    opacity: 0;
+    transition: opacity 0.4s ease-in;
+}
