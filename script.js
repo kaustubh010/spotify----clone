@@ -14,6 +14,8 @@ let songs = [
     { songName: "Buttabomma", filePath: "songs/3.mp3", coverPath: "cover/3.jpg" },
     { songName: "OMG Daddy", filePath: "songs/4.mp3", coverPath: "cover/4.jpg" },
     { songName: "Ramuloo Ramula", filePath: "songs/5.mp3", coverPath: "cover/5.jpg" },
+    { songName: "Sittharala Sirapadu", filePath: "songs/6.mp3", coverPath: "cover/1.jpg" },
+    { songName: "Samajavaragamana", filePath: "songs/7.mp3", coverPath: "cover/2.jpg" },
 ];
 
 // Changing elements by song list
@@ -40,6 +42,55 @@ masterPlay.addEventListener('click', () => {
     }
 })
 
+// Using space bar to play pause music and right left to change music
+document.onkeydown = function (e) {
+    if (e.keyCode == 32) {
+        if (audioElement.paused) {
+            audioElement.play()
+            masterPlay.classList.remove("fa-play-circle")
+            masterPlay.classList.add("fa-pause-circle")
+            gif.style.opacity = 1;
+        }
+        else {
+            audioElement.pause()
+            masterPlay.classList.remove("fa-pause-circle")
+            masterPlay.classList.add("fa-play-circle")
+            gif.style.opacity = 0;
+        }
+    }
+    
+    if(e.keyCode == 39){
+        if (songIndex >= 7) {
+            songIndex = 0;
+        }
+        else {
+            songIndex += 1;
+        }
+        audioElement.src = `songs/${songIndex + 1}.mp3`
+        mastersongname.innerText = songs[songIndex].songName;
+        audioElement.currentTime = 0;
+        audioElement.play();
+        masterPlay.classList.remove("fa-play-circle")
+        masterPlay.classList.add("fa-pause-circle")
+        gif.style.opacity = 1;
+    }
+
+    if(e.keyCode == 37){
+        if (songIndex <= 0) {
+            songIndex = 0;
+        }
+        else {
+            songIndex -= 1;
+        }
+        audioElement.src = `songs/${songIndex + 1}.mp3`
+        mastersongname.innerText = songs[songIndex].songName;
+        audioElement.currentTime = 0;
+        audioElement.play();
+        masterPlay.classList.remove("fa-play-circle")
+        masterPlay.classList.add("fa-pause-circle")
+        gif.style.opacity = 1;
+    }
+}
 // Update seekbar
 audioElement.addEventListener('timeupdate', () => {
     progress = parseInt((audioElement.currentTime / audioElement.duration) * 100);
@@ -63,7 +114,7 @@ Array.from(document.getElementsByClassName('songitemplay')).forEach((element) =>
         songIndex = parseInt(e.target.id);
         e.target.classList.remove('fa-play-circle');
         e.target.classList.add('fa-pause-circle');
-        audioElement.src = `songs/${songIndex+1}.mp3`
+        audioElement.src = `songs/${songIndex + 1}.mp3`
         mastersongname.innerText = songs[songIndex].songName;
         audioElement.currentTime = 0;
         audioElement.play();
@@ -74,13 +125,13 @@ Array.from(document.getElementsByClassName('songitemplay')).forEach((element) =>
 })
 
 document.getElementById('previous').addEventListener('click', () => {
-    if (songIndex<=0) {
+    if (songIndex <= 0) {
         songIndex = 0;
     }
     else {
         songIndex -= 1;
     }
-    audioElement.src = `songs/${songIndex+1}.mp3`
+    audioElement.src = `songs/${songIndex + 1}.mp3`
     mastersongname.innerText = songs[songIndex].songName;
     audioElement.currentTime = 0;
     audioElement.play();
@@ -88,13 +139,13 @@ document.getElementById('previous').addEventListener('click', () => {
     masterPlay.classList.add("fa-pause-circle")
 })
 document.getElementById('next').addEventListener('click', () => {
-    if (songIndex>=5) {
+    if (songIndex >= 7) {
         songIndex = 0;
     }
     else {
         songIndex += 1;
     }
-    audioElement.src = `songs/${songIndex+1}.mp3`
+    audioElement.src = `songs/${songIndex + 1}.mp3`
     mastersongname.innerText = songs[songIndex].songName;
     audioElement.currentTime = 0;
     audioElement.play();
